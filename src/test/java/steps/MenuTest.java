@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class MenuTest {
     @Дано("пользователь находится на главной странице сайта")
     public void пользовательНаходитсяНаГлавнойСтраницеСайта() {
-        open("http://localhost:8888/");
+        Menu.openMain();
     }
 
     @Если("пользователь нажимает в меню на {string}")
