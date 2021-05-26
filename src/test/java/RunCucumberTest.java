@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty", "io.qameta.allure.cucumber5jvm.AllureCucumber5Jvm"},
         features = "src/test/resources/features",
-        tags = {"@ru"},
+        tags = {"@en"},
         glue = {"steps"}
         )
 public class RunCucumberTest {

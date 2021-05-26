@@ -1,5 +1,6 @@
 package steps;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -58,6 +59,36 @@ public class MenuTest {
 
     @Тогда("пользователь видит {string}")
     public void пользовательВидит(String resultFind) {
+        switch (resultFind) {
+            case "Список из 10 владельцев":
+                Assert.assertEquals("Список из 10 владельцев", Owners.countOwnersInTable(), 10);
+                break;
+            case "Карточка владельца":
+                Assert.assertEquals("Карточка владельца", Owners.getNameOwner(), "George Franklin");
+                break;
+            case "Никто не найден":
+                Assert.assertTrue("Никто не найден", Owners.notFound());
+                break;
+        }
+    }
+
+    @Given("the user is on the Find owners page")
+    public void theUserIsOnTheFindOwnersPage() {
+        Owners.openPageFind();
+    }
+
+    @When("the user enters the owner name {string} in the Last name field")
+    public void theUserEntersTheOwnerNameOwnerInTheLastNameField(String owners) {
+        Owners.fieldLastName().val(owners);
+    }
+
+    @And("the user clicks the {string} button")
+    public void theUserClicksTheButton(String buttonTitle) {
+        Owners.button(buttonTitle).click();
+    }
+
+    @Then("the user sees {string}")
+    public void theUserSees(String resultFind) {
         switch (resultFind) {
             case "Список из 10 владельцев":
                 Assert.assertEquals("Список из 10 владельцев", Owners.countOwnersInTable(), 10);
