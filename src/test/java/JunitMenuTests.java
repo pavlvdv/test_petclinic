@@ -5,7 +5,7 @@ import pageObjects.Menu;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class JunitMenuTests {
-    @Test @Ignore
+    @Test @Ignore //привет
     public void theUserIsOnTheMainPageOfTheSite() {
         Menu.openMain();
         Menu.section("HOME").click();
