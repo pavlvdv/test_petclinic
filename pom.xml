@@ -89,56 +89,37 @@
 
     </dependencies>
 
-    <profiles>
-        <profile>
+    <pluginRepositories>
+        <pluginRepository>
             <id>drill</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-                <property>
-                    <name>env</name>
-                    <value>dev</value>
-                </property>
-            </activation>
-            <pluginRepositories>
-                <pluginRepository>
-                    <id>drill</id>
-                    <url>https://oss.jfrog.org/artifactory/list/oss-release-local</url>
-                </pluginRepository>
-            </pluginRepositories>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>com.epam.drill.agent.runner</groupId>
-                        <artifactId>maven</artifactId>
-                        <version>0.2.2</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>autotest</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <drill>
-                                <version>0.15.6</version>
-                                <agentId>ExampleAgentId</agentId>
-                                <adminHost>localhost</adminHost>
-                                <adminPort>8090</adminPort>
-                                <logLevel>TRACE</logLevel>
-                                <logFile>drillLog.log</logFile>
-                            </drill>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-            <properties>
-<!--                <extraArgs>${argLine}</extraArgs> -->
-            </properties>
-        </profile>
-    </profiles>
+            <url>https://oss.jfrog.org/artifactory/list/oss-release-local</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>com.epam.drill.agent.runner</groupId>
+                <artifactId>maven</artifactId>
+                <version>0.2.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>autotest</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <drill>
+                        <version>0.14.4</version>
+                        <agentId>stage-pet-multinstances</agentId>
+                        <adminHost>ecse005009ba.epam.com</adminHost>
+                        <adminPort>8090</adminPort>
+                        <logLevel>DEBUG</logLevel>
+                        <logFile>drillLog.log</logFile>
+                    </drill>
+                </configuration>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -146,8 +127,8 @@
                 <version>3.8.0</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
-                    <source>10</source>
-                    <target>10</target>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
 
@@ -158,7 +139,7 @@
                 <configuration>
                     <runOrder>alphabetical</runOrder>
                     <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                        <!--                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"-->
                     </argLine>
                     <systemPropertyVariables>
                         <allure.results.directory>target/allure-results</allure.results.directory>
@@ -184,5 +165,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
