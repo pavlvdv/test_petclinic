@@ -13,6 +13,6 @@ public class JunitMenuTests {
         Menu.section("Find Owners").click();
         sleep(1000);
         Menu.section("Veterinarians").click();
-        sleep(1000);
+        sleep(2000);
     }
 }
