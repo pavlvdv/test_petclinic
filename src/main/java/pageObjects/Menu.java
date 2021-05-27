@@ -5,7 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import java.util.Locale;
 
 import static com.codeborne.selenide.Selenide.*;
-import static config.Environment.BASE_URL;
+import static config.Environments.BASE_URL;
 
 public class Menu {
     public static SelenideElement section(String title) {

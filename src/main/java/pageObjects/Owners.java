@@ -3,7 +3,7 @@ package pageObjects;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.*;
-import static config.Environment.BASE_URL;
+import static config.Environments.BASE_URL;
 
 public class Owners {
     public static void openPageFind() {

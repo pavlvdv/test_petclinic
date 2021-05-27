@@ -1,0 +1,10 @@
+# Тестируемое приложение
+BASE_URL=http://localhost:8888/
+
+# Drill
+DRILL_VERSION=0.14.4
+DRILL_AGENT_ID=stage-pet-multinstances
+DRILL_ADMIN_HOST=ecse005009ba.epam.com
+DRILL_ADMIN_PORT=8090
+DRILL_LOG_LEVEL=DEBUG
+DRILL_LOG_FILE=drillLog.log

@@ -62,7 +62,7 @@
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
+            <artifactId>junit-jupiter</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
@@ -81,10 +81,12 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Для параметризированных тестов -->
         <dependency>
-            <groupId>io.github.cdimascio</groupId>
-            <artifactId>java-dotenv</artifactId>
-            <version>5.2.2</version>
+            <groupId>com.googlecode.zohhak</groupId>
+            <artifactId>zohhak</artifactId>
+            <version>1.1.1</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
@@ -98,6 +100,26 @@
 
     <build>
         <plugins>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0-alpha-2</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>${basedir}/src/main/resources/config.properties</file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>com.epam.drill.agent.runner</groupId>
                 <artifactId>maven</artifactId>
@@ -111,12 +133,18 @@
                 </executions>
                 <configuration>
                     <drill>
-                        <version>0.14.4</version>
-                        <agentId>stage-pet-multinstances</agentId>
-                        <adminHost>ecse005009ba.epam.com</adminHost>
-                        <adminPort>8090</adminPort>
-                        <logLevel>DEBUG</logLevel>
-                        <logFile>drillLog.log</logFile>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <version>${DRILL_VERSION}</version>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <agentId>${DRILL_AGENT_ID}</agentId>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <adminHost>${DRILL_ADMIN_HOST}</adminHost>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <adminPort>${DRILL_ADMIN_PORT}</adminPort>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <logLevel>${DRILL_LOG_LEVEL}</logLevel>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <logFile>${DRILL_LOG_FILE}</logFile>
                     </drill>
                 </configuration>
             </plugin>
@@ -163,6 +191,7 @@
                     <allureDownloadUrl>https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/${allure.version}/allure-commandline-${allure.version}.zip</allureDownloadUrl>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 </project>

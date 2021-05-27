@@ -4,3 +4,5 @@
 /target/
 /test_pitclinic.iml
 /.env
+/drillLog.log
+/src/main/resources/config.properties
